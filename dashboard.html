@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <!-- <h2>Hello <span id="username"></span></h2> -->
+    <script>
+      let url = window.location.search; //http://localhost:5500/dashboard.html?user=abhishek@gmail.com
+      let urlParams = new URLSearchParams(url); //user=abhishek@gmail.com
+      let username = urlParams.get("user"); // abhishek@gmail.com
+      // document.getElementById("username").innerHTML = username;
+      let myF = async () => {
+        let response = await fetch(
+          "http://localhost:8080/getdata/" + username.toString(),
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((resp) => resp.json())
+          .then((dataaa) => {
+
+            let imgG =   `<img src="https://robohash.org/${dataaa.number+dataaa.name+dataaa.email}" alt="John" style="height: fit-content; border-radius: 30em;">`
+            console.log(dataaa);
+
+            var uname = document.getElementById("uname");
+            var uphone = document.getElementById("uphone");
+            var uemail = document.getElementById("uemail");
+            var pp = document.getElementById("profilePic");
+
+            pp.innerHTML = imgG;
+
+           let nameUpper = dataaa.name.toString()[0].toUpperCase()+dataaa.name.toString().substring(1);
+         
+
+           uname.innerHTML= nameUpper;
+            uphone.innerHTML=dataaa.number;
+            uemail.innerHTML=dataaa.email;
+
+
+          });
+      };
+      myF();
+    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body{
+    background-image: url(./dashboard.png);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color:wheat;
+  
+  
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+
+
+
+<div class="card">
+  <h2 style="text-align:center">Welcome to the Dashboard</h2>
+  <span id="profilePic"></span>
+  <!-- <img src="https://i.pravatar.cc/200" alt="John" style="height: fit-content; border-radius: 30em;"> -->
+  <h1 id="uname"></h1>
+  <p class="title" id="uemail"></p>
+  <p id="uphone"></p>
+ <p> <button  
+  onclick="window.location.href = 'examination.html';">
+      Exam Section
+  </button></p>
+  <p><button 
+    onclick="window.location.href = 'index.html';">
+        Home Page
+    </button></p>
+</div>
+
+</body>
+</html>
+
+  </body>
+</html>

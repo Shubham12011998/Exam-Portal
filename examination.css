@@ -1,0 +1,38 @@
+body {
+  background-image: url("./quiz.jpg"); /*pixabay.com*/
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.quest-box {
+  background: gray;
+  padding: 32px;
+  margin-top: 100px;
+}
+.questions li {
+  list-style-type: none;
+  padding-left: 0;
+  background-color: skyblue;
+  padding: 16px !important;
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #fff;
+}
+.questions li.active {
+  background: green;
+  color: #fff;
+}
+p.category {
+  font-size: 20px;
+}
+.heading {
+  margin-bottom: 32px;
+}
+.badge {
+  font-size: 32px;
+}
+.btn-primary {
+  color: #fff !important;
+  font-size: 24px;
+}
